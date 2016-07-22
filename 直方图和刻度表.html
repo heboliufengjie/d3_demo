@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>d3</title>
+    <style type="text/css">
+    svg,
+    g {
+        pointer-events: all;
+    }
+    
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+    </style>
+</head>
+
+<body>
+    <script src="http://cdn.bootcss.com/d3/4.1.1/d3.js"></script>
+    <script>
+    var data_1 = [23, 54, 67, 12, 4];
+    var data_2 = [1, 2, 3, 4, 5];
+
+    var width = 800;
+    var height = 800;
+
+    var mapScale = d3.scaleLinear()
+        .domain([-70, +70])
+        .range([0, width - 40]);
+
+    var axisBot = d3.axisBottom(mapScale);
+
+    var axisLft = d3.axisLeft(data_1);
+
+
+    var canvas = d3.select('body')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
+
+    var xsCont = canvas.append('g')
+        .call(axisBot);
+
+    if (false) {
+        var lines = canvas.selectAll('rect')
+            .data(data_1)
+            .enter()
+            .append('rect')
+            .attr('width', function(d) {
+                return mapScale(d);
+            })
+            .attr('height', 20)
+            .attr('y', function(d, i) {
+                return i * 100
+            });
+    }
+    </script>
+</body>
+
+</html>
