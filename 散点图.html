@@ -9,13 +9,13 @@
         padding-top: 50px;
         padding-left: 100px;
     }
-    
+
     #chartArea {
         width: 400px;
         height: 300px;
         background-color: #CCC;
     }
-    
+
     .bar {
         display: inline-block;
         width: 20px;
@@ -26,7 +26,7 @@
         /* SVG doesn't have background prop, use fill instead*/
         z-index: 99;
     }
-    
+
     .bubble {
         display: inline-block;
         fill: purple;
@@ -38,8 +38,8 @@
 </head>
 
 <body>
-    <script src="http://cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
-    <script src="http://cdn.bootcss.com/d3/4.1.1/d3.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/d3.js"></script>
     <section id="chartArea"></section>
     <script>
     var dataset = _.map(_.range(30), function(num) {
