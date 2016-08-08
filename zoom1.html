@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>d3</title>
+</head>
+
+<body>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+    var zoom = d3.behavior.zoom()
+        .scaleExtent([1, 10])
+        .on("zoom", zoomClicked);
+
+    var vis = d3.select("#svg-canvas").append("svg")
+        .attr("width", "550")
+        .attr("height", "200")
+        .append("g")
+        .attr("class", "svg-container")
+        .attr("transform", "translate(10,10)")
+        .call(zoom);
+
+    vis.append("rect")
+        .attr("x", 10)
+        .attr("y", 10)
+        .attr("width", 100)
+        .attr("height", 40)
+        .style("fill", "#444");
+
+    function zoomed() {
+        d3.select(".svg-container").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    }
+
+    function zoomClicked(translate, scale) {
+        d3.select(".svg-container").attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+    }
+
+    $(document).ready(function() {
+        $("#zoom").click(function() {
+            zoomClicked(4, 4);
+        });
+    });
+    </script>
+    <div id="svg-canvas">
+    </div>
+    <button id="zoom">
+        Zoom
+    </button>
+</body>
+
+</html>
